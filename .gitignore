@@ -1,0 +1,20 @@
+# Ignore the Virtual Environment
+.venv/
+__pycache__/
+*.pyc
+
+# Ignore the Data (Too big for GitHub)
+data/*.csv
+data/*.zip
+
+# Ignore Environment Variables (Security risk)
+.env
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore MongoDB Data (If you mapped it locally)
+mongo1_data/
+mongo2_data/
+mongo3_data/

@@ -36,16 +36,17 @@ def test_raw_data_volume():
 # Does our Pydantic model correctly catch bad data?
 # ---------------------------------------------------------
 def test_schema_validation():
-    # Case A: Valid Data
+    # Case A: Valid Data (UPDATED to include valence)
     valid_data = {
         "track_id": "123", "artist_name": "Test Artist", "track_name": "Song",
         "year": 2020, "genre": "pop", "danceability": 0.5, "energy": 0.8,
-        "loudness": -5.0, "tempo": 120.0, "duration_ms": 200000
+        "loudness": -5.0, "tempo": 120.0, "duration_ms": 200000,
+        "valence": 0.5  # <--- Added this required field
     }
     try:
         SpotifyTrack(**valid_data)
-    except ValidationError:
-        pytest.fail("Pydantic rejected valid data!")
+    except ValidationError as e:
+        pytest.fail(f"Pydantic rejected valid data! Error: {e}")
 
     # Case B: Invalid Data (Negative Tempo)
     invalid_data = valid_data.copy()

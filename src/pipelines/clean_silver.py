@@ -57,6 +57,7 @@ def clean_data():
         # Fill Nulls
         if 'popularity' in df.columns:
             df['popularity'] = df['popularity'].fillna(0)
+
         
         # 3. Pydantic Validation
         # This will now include 'valence' because you updated schema.py!
